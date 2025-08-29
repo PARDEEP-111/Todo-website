@@ -1,57 +1,28 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+.slide{
+    /* border: 2px solid black; */
+    width: 180px;
+    height: 500px;
+    position: absolute;
+    right: 0px;
+    background-color: #fff;
+    transition: 0.5s ease ;
 }
-
-.nav_list {
-    display: grid;
-    grid-template-columns: 15% 70% 15%; /* left / center / right */
-    align-items: center;
-    list-style: none;
-    width: 100%;
-    height: 8vh;
-    border-bottom: 2px solid gray;
+body{
+        background-color: #f2f2f2;
 }
-
-#home_btn {
-    justify-self: start;
-    font-size: 24px;
-    color: #66a1ee;
-    padding-left: 20px;
-    cursor: pointer;
-}
-
-.nav_center {
-    display: flex;
-    justify-content: center;
-}
-
-.nav_center .center_list {
-    display: flex;
-    gap: 50px; /* space between Home / About / Contact */
+ul li {
     list-style: none;
 }
-
-.nav_itm {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    cursor: pointer;
+ul li a{
+    font-weight: 500;
+    display: block;
+    text-decoration: none;
+    transition: 0.5s ease ;
 }
-
-.nav_itm:hover {
-    color: #3380ff;
-    transform: scale(1.05);
-    transition: 0.3s;
+#input{
+    display: none;
+    visibility: hidden;
 }
-
-#profile {
-    justify-self: end;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    padding-right: 20px;
-    cursor: pointer;
+.toggle{
+    position: absolute;
 }
