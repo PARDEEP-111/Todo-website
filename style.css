@@ -1,0 +1,65 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+body{
+    display: grid;
+    grid-template-columns:  20vw 65vw 15vw;
+    grid-template-rows: 6vh 94vh ;
+
+}
+header{
+    border: 2px solid red;
+    grid-column: 1/4;
+    grid-row:  1/2;
+}
+nav{
+    border: 2px solid yellowgreen;
+    grid-column: 1/2;
+    grid-row:  2/3;
+    position: relative;
+}
+main{
+    border: 2px solid black;
+    grid-column: 2/3;
+    grid-row:  2/3;
+}
+.loginCenter{
+    grid-column:  3/4;
+    grid-row: 2/3;
+    border: 2px solid blue;
+}
+.titleBar{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.titleBar >.imageBar> img{
+height: 50px;
+width: 200px;
+object-fit: cover;
+}
+.loginBar {
+    /* height: 50px; */
+    /* border: 2px solid blue; */
+    display: flex;
+    width: 250px;
+    align-items: center;
+    justify-content: flex-end;
+}
+.loginBar >a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-family: Arial, Helvetica, sans-serif;
+   font-weight: 600;
+   /* border: 2px solid black; */
+   margin: 10px;
+   /* padding-bottom: -10px; */
+}
+.loginBar > img{
+    height: 30px;
+    cursor: pointer;
+}
