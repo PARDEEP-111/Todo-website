@@ -16,6 +16,7 @@ body{
    
 }
 nav{
+  margin-bottom: 20px;
   border-bottom: 1px solid black;
     grid-column: 1/4;
     grid-row: 1/2;
@@ -27,8 +28,6 @@ nav{
 .container{
     grid-row: 2/3;
     grid-column: 2/3;
-    /* width: 80vw; */
-    /* border: 2px solid blue;  */
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -38,8 +37,7 @@ nav{
     gap: 10px   ;
 margin: 10px;
 width: 90%;
-/* height: 70vh; */
-border: 2px solid rgb(117, 39, 39);
+
 padding: 20px;
 display: flex;
 flex-direction: column;
@@ -49,8 +47,6 @@ align-items: center;
 }
 
 .add{
-   /* width: 46%; */
-    /* border: 2px solid  blue; */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -114,7 +110,8 @@ align-items: center;
   width: 30vw;
   border: none;
   border-bottom: 1px solid #515151;
-  background: transparent;
+  background: rgb(170, 181, 230);
+  color: #000000;
 }
 
 .wave-group #myInput:focus {

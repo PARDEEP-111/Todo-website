@@ -3,7 +3,7 @@
         /* background-color: red   ; */
     }
     .container{
-        border: 2px solid red;
+        /* border: 2px solid red; */
         grid-column: 1/4;
     }
     .task-bar{
@@ -12,12 +12,15 @@ width: 99%;
 .wave-group #myInput {
    
         width: 50vw;
-        border: 2px solid red;
+        /* border: 2px solid red; */
     }
     .tasks{
         width: 100%;
     }
     .add-btn{
-        border: 2px solid blue;
+        /* border: 2px solid blue; */
+    }
+    .wave-group .bar{
+        width: 50vw;
     }
 }
