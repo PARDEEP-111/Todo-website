@@ -77,3 +77,9 @@ darkTheme.addEventListener("click", ()=>{
    console.log("hellow");
    
 })
+
+let comDel = document.querySelector(".comDeletBtn")
+comDel.addEventListener("click", ()=>{
+    completeTaskCon.innerHTML= ""
+    completArr= []
+})
