@@ -3,14 +3,22 @@ let completeTaskCon = document.querySelector(".complete-task-bar")
 let taskContainer = document.querySelector(".task-bar")
 let input = document.querySelector("#myInput")
 let btn = document.querySelector(".add-btn")
-let completArr = []
-let arr = []
+
+let arr = JSON.parse(localStorage.getItem("tasks")) || [];
+let completArr = JSON.parse(localStorage.getItem("completedTasks")) || [];
+
+function saveData() {
+  localStorage.setItem("tasks", JSON.stringify(arr));
+  localStorage.setItem("completedTasks", JSON.stringify(completArr));
+}
 
 
 //                      for rerendering the list an
 function rerender() {
+    
     taskContainer.innerHTML = ""
     arr.forEach((element, index) => {
+        
         let li = document.createElement("li")
         let delBtn = document.createElement("button")
         li.textContent = element
@@ -30,7 +38,7 @@ function rerender() {
             arr.splice(index, 1)
             rerender()
             comTask()
-
+     saveData()
         })
 
 
@@ -40,8 +48,8 @@ function rerender() {
         delBtn.addEventListener("click", () => {
             arr.splice(index, 1)
             rerender()
+            saveData()
         })
-
 
 
     });
@@ -54,6 +62,7 @@ btn.addEventListener("click", () => {
     arr.push(input.value.trim())
     input.value = ""
     rerender()
+    saveData()
 })
  function comTask(){
 completeTaskCon.innerHTML=""
@@ -82,4 +91,6 @@ let comDel = document.querySelector(".comDeletBtn")
 comDel.addEventListener("click", ()=>{
     completeTaskCon.innerHTML= ""
     completArr= []
+    saveData()
 })
+rerender()
