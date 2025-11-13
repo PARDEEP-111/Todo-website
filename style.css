@@ -11,7 +11,7 @@ body,html{
 body{
     display: grid;
     grid-template-columns: 20vw 60vw 20vw;
-    grid-template-rows: 120px 80vh;
+    grid-template-rows: 110px 80vh;
     background-color: rgb(255, 255, 255);
    
 }
@@ -37,7 +37,11 @@ nav{
     gap: 10px   ;
 margin: 10px;
 width: 90%;
-
+min-height: 140px;
+max-height: 250px;
+overflow-y: auto;
+overflow-x: hidden;
+border-top: 1px solid black;
 padding: 20px;
 display: flex;
 flex-direction: column;
@@ -50,9 +54,11 @@ align-items: center;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 30px;
 
 }
 .add-btn{
+  margin-left: 5px;
     --hover-shadows: 16px 16px 33px #5d5e5f, 2px 2px 33px #303030;
   --accent: #5264AE;
   font-weight: bold;
@@ -84,18 +90,31 @@ align-items: center;
  font-size: 18px;
  font-weight: bold;
  border :2px solid rgb(91, 177, 226);
- width: 60%;
+ width: 70%;
+ min-height: 70px;
  height: 80px;
  padding: 10px;
  margin: 10px;
  display: flex;
+ align-items: center;
  justify-content: space-between;
  
 }
 .delbtn{
-     height: 50px;
-    width: 30%; 
+  cursor: pointer;
+     height: 40px;
+    width: 20%; 
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(192, 31, 31);
+    transition: all .21s;
 }
+.delbtn:hover{
+  transform: scalex(1.04) ;
+    background-color: rgb(219, 32, 32);
+
+}
+
 
 /* for theme change */
 /* From Uiverse.io by AbanoubMagdy1 */ 
@@ -119,7 +138,7 @@ align-items: center;
 }
 
 .wave-group .label {
-  color: #999;
+  color: #868686;
   font-size: 18px;
   font-weight: normal;
   position: absolute;
@@ -172,8 +191,17 @@ align-items: center;
   width: 50%;
 }
 .comBtn{
-  height: 50px;
-  width: 150px;
+  height: 40px;
+  width: 20%;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(30, 168, 30);
+  transition: all .21s;
+}
+.comBtn:hover{
+ transform: scalex(1.04);
+ background-color: rgb(45, 201, 45);=
+
 }
 /* From Uiverse.io by chicogale */ 
 .cyber-toggle-wrapper {
@@ -496,6 +524,7 @@ color: white;
 }
 /* From Uiverse.io by vinodjangid07 */ 
 .button {
+  min-height: 50px;
   width: 50px;
   height: 50px;
   border-radius: 50%;
