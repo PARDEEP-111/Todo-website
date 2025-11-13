@@ -17,7 +17,7 @@ body{
 }
 nav{
   margin-bottom: 20px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgb(87, 85, 85);
     grid-column: 1/4;
     grid-row: 1/2;
     display: flex;
@@ -41,7 +41,7 @@ min-height: 140px;
 max-height: 250px;
 overflow-y: auto;
 overflow-x: hidden;
-border-top: 1px solid black;
+border-top: 1px solid rgb(87, 85, 85);
 padding: 20px;
 display: flex;
 flex-direction: column;
@@ -86,10 +86,10 @@ align-items: center;
 .tasks{
  text-decoration: none;
  list-style: none;
- border-radius: 5px;
+ border-radius: 4px;
  font-size: 18px;
  font-weight: bold;
- border :2px solid rgb(91, 177, 226);
+ border :1px solid rgb(91, 177, 226);
  width: 70%;
  min-height: 70px;
  height: 80px;
