@@ -191,6 +191,7 @@ align-items: center;
   width: 50%;
 }
 .comBtn{
+  cursor: pointer;
   height: 40px;
   width: 20%;
   border: none;
@@ -200,7 +201,7 @@ align-items: center;
 }
 .comBtn:hover{
  transform: scalex(1.04);
- background-color: rgb(45, 201, 45);=
+ background-color: rgb(45, 201, 45);
 
 }
 /* From Uiverse.io by chicogale */ 

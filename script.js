@@ -83,9 +83,21 @@ let darkTheme= document.querySelector("#cyber-toggle")
 let them=  document.getElementsByTagName("body")[0]
 darkTheme.addEventListener("click", ()=>{
    them.classList.toggle("darkThem")
-   console.log("hellow");
+
+   if(them.classList.contains("darkThem")){
+    localStorage.setItem("them", "dark")
+   }
+   else{
+    localStorage.setItem("them", "light")
+   }
    
 })
+
+const saveThem = localStorage.getItem("them");
+if(saveThem==="dark"){
+    them.classList.add("darkThem")
+    darkTheme.checked=true;
+}
 
 let comDel = document.querySelector(".comDeletBtn")
 comDel.addEventListener("click", ()=>{
