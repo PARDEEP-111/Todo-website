@@ -1,6 +1,16 @@
 import  { useState } from "react";
-
+import axios from "axios"
+import { useEffect } from "react";
 function App() {
+  const [data, setdata] = useState(null)
+  useEffect(()=>{
+    axios.get("http://localhost:5000/api/data").then((Response)=>{
+      setdata(Response.data)
+    }).catch((error)=>{
+      console.log(error);
+      
+    })
+  })
   const [title, setTitle] = useState("");
   const [details, setDetails] = useState("");
   const [task, setTask] = useState([]);
@@ -22,8 +32,15 @@ function App() {
   }
 
   return (
+    
     <div className="w-screen h-screen  justify-center   lg:flex  ">
+     {data&&(
+      <>
+      <h1>{data.name}</h1>
+      </>
+     )}
       <form
+
         action="text"
         className="flex flex-col justify-start items-start w-[90vw] sm:w-[50vw] py-2 gap-9 px-10 "
         onSubmit={(idx) => {
