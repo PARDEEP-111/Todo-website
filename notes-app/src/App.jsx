@@ -17,39 +17,38 @@ function App() {
   const [title, setTitle] = useState("");
   const [details, setDetails] = useState("");
   const [task, setTask] = useState([]);
-  const submithandler = (e) => {
-    e.preventDefault();
+const submithandler = (e) => {
+  e.preventDefault();
 
-    let copyTask = [...task];
-    copyTask.push({ title, details });
-    setDetails("");
-    setTitle("");
-    setTask(copyTask);
-  };
+  axios
+    .post("http://localhost:5000/api/task", {
+      title: title,
+      description: details
+    })
+    .then((response) => {
+      setdata([...data, response.data]);
+      setTitle("");
+      setDetails("");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 
-  function delete_task(idx) {
-    let copyTask = [...task];
-    copyTask.splice(idx, 1);
-    setTask(copyTask)
-   
-  }
-
+function delete_task(idx) {
+  let copyTask = [...task];
+  copyTask.splice(idx, 1);
+  setTask(copyTask);
+}
   return (
     
     <div className="w-screen h-screen  justify-center   lg:flex  ">
-     {data.map((e)=>{
-      <div key = {e._id}>\
-      <h1>{e.title}</h1>
-      <p>{e.description}</p>
-      </div>
-     })}
+     
       <form
 
         action="text"
         className="flex flex-col justify-start items-start w-[90vw] sm:w-[50vw] py-2 gap-9 px-10 "
-        onSubmit={(idx) => {
-          submithandler(idx);
-        }}
+        onSubmit={submithandler}
       >
         <h1 className="text-3xl font-bold ">Add Notes</h1>
         <input

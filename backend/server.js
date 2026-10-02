@@ -16,15 +16,27 @@ mongoose.connect("mongodb://127.0.0.1:27017/data").then(()=>
     
   })
 app.use(cors())
-app.get('/api/data',(req,res)=>{
-  res.send("hello world")
-})
+app.use(express.json())
+
 
 app.get("/api/task", async(req,res)=> {
   try {
     const tasks = await Task.find()
     res.json(tasks)
   } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+});
+
+app.post("/api/task", async(req,res)=> {
+ try{
+
+  const newTask = await  Task.create({
+    title: req.body.title,
+    description: req.body.description
+  })
+  res.status(201).json(newTask)
+ }catch (error) {
     res.status(500).json({ message: error.message })
   }
 });
