@@ -2,15 +2,18 @@ import  { useState } from "react";
 import axios from "axios"
 import { useEffect } from "react";
 function App() {
-  const [data, setdata] = useState(null)
+  const [data, setdata] = useState([])
   useEffect(()=>{
-    axios.get("http://localhost:5000/api/data").then((Response)=>{
-      setdata(Response.data)
+
+    axios.get("http://localhost:5000/api/task")
+    .then((response)=>{
+      setdata(response.data)
+
     }).catch((error)=>{
       console.log(error);
       
     })
-  })
+  }, []);
   const [title, setTitle] = useState("");
   const [details, setDetails] = useState("");
   const [task, setTask] = useState([]);
@@ -34,11 +37,12 @@ function App() {
   return (
     
     <div className="w-screen h-screen  justify-center   lg:flex  ">
-     {data&&(
-      <>
-      <h1>{data.name}</h1>
-      </>
-     )}
+     {data.map((e)=>{
+      <div key = {e._id}>\
+      <h1>{e.title}</h1>
+      <p>{e.description}</p>
+      </div>
+     })}
       <form
 
         action="text"
@@ -73,16 +77,16 @@ function App() {
       <div className="flex flex-col w-1/2 ml:w-[90%] sm:w-[90%] w-[100%] overflow-x-hidden max-h-[90%]  sm:h-[90%] ">
         <h1 className="font-bold text-3xl px-5 shadow-sm">Your notes</h1>
         <div className="sm:w-[90%] ml:h-[90%] flex flex-col p-2 items-center justify-start w-[90vw]  h-[90%] overflow-auto gap-5  m-5 rounded text-black">
-          {task.map(function (e, idx) {
+          {data.map(function (e) {
             return (
               <div
-                key={idx}
+                key={e._id}
                 className="w-[90%] font-semibold relative  shadow-lg border-b-1 min-h-30  flex
              flex-col  p-4"
               >
                 <span
                   onClick={() => {
-                    delete_task(idx);
+                    delete_task(e._id);
                   }}
                   className="absolute right-2 top-2 text-2xl font-extrabold cursor-pointer rounded-full "
                 >
@@ -92,7 +96,7 @@ function App() {
                   {e.title}
                 </h3>
                 <h6 className="text-sm font-semibold text-gray-600">
-                  {e.details}
+                  {e.description}
                 </h6>
               </div>
             );
