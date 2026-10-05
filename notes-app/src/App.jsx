@@ -5,6 +5,7 @@ import { useEffect } from "react";
 function App() {
   const [data, setdata] = useState([]);
 
+
   useEffect(() => {
     axios
       .get("http://localhost:5000/api/task")
@@ -19,7 +20,6 @@ function App() {
   const [title, setTitle] = useState("");
   const [details, setDetails] = useState("");
 
-
   const submithandler = (e) => {
     e.preventDefault();
 
@@ -27,6 +27,7 @@ function App() {
       .post("http://localhost:5000/api/task", {
         title: title,
         description: details,
+       
       })
       .then((response) => {
         setdata([...data, response.data]);
@@ -38,13 +39,18 @@ function App() {
       });
   };
 
+ function markcCompleted(_id) {
+  const task = data.find((task) => task._id === _id);
 
-
-function delete_task(id) {
   axios
-    .delete(`http://localhost:5000/api/task/${id}`)
-    .then(() => {
-      const updatedData = data.filter((task) => task._id !== id);
+    .patch(`http://localhost:5000/api/task/${_id}`, {
+      completed: !task.completed,
+    })
+    .then((response) => {
+      const updatedData = data.map((task) =>
+        task._id === _id ? response.data : task
+      );
+
       setdata(updatedData);
     })
     .catch((error) => {
@@ -52,7 +58,17 @@ function delete_task(id) {
     });
 }
 
-
+  function delete_task(id) {
+    axios
+      .delete(`http://localhost:5000/api/task/${id}`)
+      .then(() => {
+        const updatedData = data.filter((task) => task._id !== id);
+        setdata(updatedData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   return (
     <div className="w-screen h-screen justify-center lg:flex">
@@ -113,13 +129,18 @@ function delete_task(id) {
                 <h6 className="text-sm font-semibold text-gray-600">
                   {e.description}
                 </h6>
+              <h2 className="border hover:scale-106 transition-all  bg-green-600 w-fit rounded-2xl px-2 cursor-pointer py-1 text-xs"   onClick={()=>{
+                markcCompleted(e._id)
+              }} >   {e.completed ? "Completed" : "Not Completed"}  
+
+              </h2>
               </div>
             );
           })}
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default App;

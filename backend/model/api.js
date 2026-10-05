@@ -3,9 +3,14 @@ const takschema =  new mongoose.Schema({
     title: {
         required: true,
         type: String
+        
     },
     description: {
          type: String
+    },
+    completed: {
+        type: Boolean,
+        default: false
     }
 })
 const task = mongoose.model("Task", takschema,"testing data")
