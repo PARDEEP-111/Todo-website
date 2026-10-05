@@ -40,7 +40,22 @@ app.post("/api/task", async(req,res)=> {
     res.status(500).json({ message: error.message })
   }
 });
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
+
+app.delete("/api/task/:id", async (req, res) => {
+  try {
+    const deletedTask = await Task.findByIdAndDelete(req.params.id);
+
+    if (!deletedTask) {
+      return res.status(404).json({ message: "Task not found" });
+    }
+
+    res.json(deletedTask);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
    
