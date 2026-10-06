@@ -1,16 +1,85 @@
-# React + Vite
+# Notes App Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This directory contains the React + Vite frontend for the notes application. It lets users add notes, view saved notes, mark tasks as complete, and delete them.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Create notes with a title and details
+- Fetch notes from the backend API
+- Mark notes as complete or incomplete
+- Delete notes from the list
+- Responsive UI styled with Tailwind CSS
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- Vite
+- Tailwind CSS
+- Axios
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```text
+notes-app/
+├── public/
+├── src/
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── package.json
+├── vite.config.js
+├── eslint.config.js
+├── index.html
+└── README.md
+```
+
+## Prerequisites
+
+- Node.js installed
+- The backend API running at `http://localhost:5000`
+
+## Installation
+
+```bash
+cd notes-app
+npm install
+```
+
+## Run the app
+
+```bash
+npm run dev
+```
+
+Then open the local URL shown in the terminal, usually:
+
+```text
+http://localhost:5173
+```
+
+## How it works
+
+The frontend makes requests to the backend using Axios:
+
+- `GET /api/task` to load notes
+- `POST /api/task` to create a new note
+- `PATCH /api/task/:id` to toggle completion status
+- `DELETE /api/task/:id` to remove a note
+
+## Notes
+
+- The app is configured to call the backend at `http://localhost:5000`.
+- If the backend is not running, notes will not load or save correctly.
+- The code is intentionally simple and is designed for local development.
+
+## Production build
+
+```bash
+npm run build
+```
+
+To preview the production build:
+
+```bash
+npm run preview
+```

@@ -60,11 +60,10 @@ app.patch("/api/task/:id", async (req, res) => {
   try {
     const markcompleted = await Task.findByIdAndUpdate(
       req.params.id,
-      { completed: req.body.completed },  
-      { new: true }
-
+      { completed: req.body.completed },
+      { new: true },
     );
-      if (!markcompleted) {
+    if (!markcompleted) {
       return res.status(404).json({ message: "Task not found" });
     }
 
